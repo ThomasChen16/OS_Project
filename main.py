@@ -43,7 +43,7 @@ def priority_scheduling(processes):
             time += 1
             continue
         
-        # pick highest priority and closest arrival_time
+        # pick highest priority and arrival_time as tie-breaker
         current = min(available, key=lambda x: (x.priority, x.arrival_time))
         
         # remove from ready queue
@@ -151,11 +151,12 @@ def print_schedule(title, schedule):
 def main():
     # Sample 
     processes = [
-        Process("P1", "AB101", 0, 7, fuel=10),
-        Process("P2", "BC202", 1, 4, fuel=50),
-        Process("P3", "CD303", 2, 6, fuel=25),
-        Process("P4", "DE404", 3, 5, fuel=25),
-    ]
+    Process("P1", "AB101", 0, 7, fuel=50),  # low priority, arrives first
+    Process("P2", "BC202", 1, 4, fuel=10),  # high priority, arrives later
+    Process("P3", "CD303", 2, 6, fuel=25),  # medium
+    Process("P4", "DE404", 3, 5, fuel=25),  # same priority as P3 (tie case)
+    Process("P5", "EF505", 4, 3, fuel=10),  # another high priority
+]
     
     # Print out processes 
     print("\nInitial Process/Arriving Plane List:")
