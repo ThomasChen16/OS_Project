@@ -25,15 +25,17 @@ class Process:
         else:
             return 3
 
-# Priorioty Scheduling Algorithm
+# Priority Scheduling Algorithm
 def priority_scheduling(processes):
     # Current system time
     time = 0
     # Hold start_time, end_time, and pid for each scheduled process
     schedule = []
     
+    # copy process list to represent ready queue
     ready = processes.copy()
     
+    # loop until ready queue is empty
     while ready:
         # get processes that are available
         available = [p for p in ready if p.arrival_time <= time]
@@ -52,14 +54,15 @@ def priority_scheduling(processes):
         # start time is current time, end time is start time + burst time
         start = time
         time += current.burst_time
-        end = time
         
+        # update process completion time
+        end = time
         current.completion = end
         
         # add to schedule
         schedule.append((start, end, current.pid))
     
-    # print schedule
+    # print schedule order
     print_schedule("Priority Schedule", schedule)
     
     # print process table      
@@ -76,7 +79,7 @@ def fcfs(processes):
     # Hold start_time, end_time, and pid for each scheduled process
     schedule = []
     
-    # for each process, calculate start and end time, and update completion time
+    # loop through each process by arrival time
     for process in processes:
         # if process arrives after current time, move time forward to arrival time
         if time < process.arrival_time:
@@ -93,7 +96,7 @@ def fcfs(processes):
         # add to schedule
         schedule.append((start, end, process.pid))
     
-    # print schedule
+    # print schedule order
     print_schedule("FCFS Schedule", schedule)    
     
     # print process table  
