@@ -119,7 +119,7 @@ def round_robin(processes, quantum):
     # Hold start_time, end_time, and pid for each scheduled process
     schedule = []
    
-    # Sort proccesses by arrival time
+    # Sort processes by arrival time
     processes.sort(key=lambda x: x.arrival_time)
    
     # Track processes that have been added to the queue
