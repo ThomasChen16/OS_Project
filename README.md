@@ -41,5 +41,11 @@ Full example of what "processes =" looks like and what chould be inside Process(
 processes = [
 
   Process("P1", "P101", 2, 3, fuel=50)
+  
 ]
 
+# Results Summary
+
+The expected results, once the program is ran, you should expect to see a gantt chart table for all three schedulers that goes through the order of the planes that have been processed and a process table for each algorithm that lists the priority, the completion time, turn around time and waiting time of each plane. Along with the average time the turn around time and waiting time was.
+
+In our results we saw that the Priority Scheduler was slighlty more efficient in its process compared to the FCFS scheduler where both turn around time and waiting time averages were a second shorter when comparing the two. Mean while the Round Robin Scheduler is very consistent with its result since it processes all of the planes that could fly off first and puts the one plane that couldn't be processed in time to the back of the queue.
